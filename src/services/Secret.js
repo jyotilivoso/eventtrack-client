@@ -1,0 +1,2 @@
+const CYS ="khuyfxdghjkjiugyfxcvbjuyfdgxcvbjufgcvbjuyfcghgfcvhbhfgcvhfghcv"
+export default CYS;
