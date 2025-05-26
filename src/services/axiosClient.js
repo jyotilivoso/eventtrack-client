@@ -19,7 +19,7 @@ export function isLoggedIn() {
 
 export async function logout() {
     localStorage.clear();
-    window.location.href = '/login';
+    window.location.href = '/';
     return 0;
 }
 
@@ -34,7 +34,7 @@ export function getUserName() {
     let token = localStorage.getItem('accessToken');
     if (token) {
         let decoded = jwtDecode(token);
-        // console.log("user Details bro!=",decoded)
+        console.log("user Details bro!=",decoded)
         return decoded.name || '';
     }
     else {
@@ -70,7 +70,8 @@ export function getUserRoll() {
     let token = localStorage.getItem('accessToken');
     if (token) {
         let decoded = jwtDecode(token);
-        return decoded.roll || '';
+        console.log(decoded)
+        return decoded.role || '';
     }
     else {
         return '';

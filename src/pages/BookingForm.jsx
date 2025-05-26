@@ -1,10 +1,11 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { bookTourist } from "../services/Service";
 
 const BookingForm = () => {
   const location = useLocation();
+  const navigate=useNavigate();
   const dest = location.state?.destination || "Destination";
 
   // Validation schema using Yup
@@ -50,12 +51,13 @@ const BookingForm = () => {
 
   try {
     const res = await bookTourist(payLoad);
+    navigate("/")
     console.log("Booking successful:", res);
-    alert("Booking submitted successfully!");
+    toast("Booking submitted successfully!");
     resetForm();
   } catch (err) {
     console.error("Booking failed:", err);
-    alert("Failed to submit booking. Please try again.");
+    toast("Failed to submit booking. Please try again.");
   }
 }}
 
